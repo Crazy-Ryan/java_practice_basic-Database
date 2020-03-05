@@ -21,6 +21,21 @@ public class Address {
     this.masterNumber = masterNumber;
   }
 
+  public String getMasterNumber() {
+    return masterNumber;
+  }
+
+  public String getCountry() {
+    return country;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public String getStreet() {
+    return street;
+  }
 }
 
 
