@@ -4,6 +4,7 @@ import entity.MasterNumber;
 import entity.Person;
 import entity.Telephone;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -40,9 +41,9 @@ public class PersonSet {
                 .collect(Collectors.groupingBy(Email::getMasterNumber));
         return this.masterNumbers.stream().map(MasterNumber::getNumber)
                 .map(number -> new Person(number,
-                        telephoneMap.get(number),
-                        addressMap.get(number).get(0),
-                        emailMap.get(number)));
+                        telephoneMap.containsKey(number) ? telephoneMap.get(number) : new ArrayList<>(),
+                        addressMap.containsKey(number) ? addressMap.get(number).get(0) : null,
+                        emailMap.containsKey(number) ? emailMap.get(number) : new ArrayList<>()));
     }
 
     public List<Address> getAddresses() {
