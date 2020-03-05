@@ -22,9 +22,9 @@ public class PersonService {
     public Stream<Person> getPersonByMasterNumbers(List<MasterNumber> numbers) {
         //TODO: Add the code to return people by numbers
         // Use groupToPeople() method
-        return numbers.stream().map(MasterNumber::getNumber).map(Arrays::asList)
-                .filter(numList -> people.containsKey(numList)).map(masterNumber -> people.get(masterNumber))
-                .map(personSet -> personSet.map(PersonSet::groupToPeople)).findAny().orElse(Optional.empty())
+
+        return Optional.ofNullable(people.get(numbers.stream().map(MasterNumber::getNumber)
+                .collect(Collectors.toList()))).orElse(Optional.empty()).map(PersonSet::groupToPeople)
                 .orElse(Stream.empty());
     }
 
