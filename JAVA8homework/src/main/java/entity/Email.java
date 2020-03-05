@@ -38,4 +38,11 @@ public class Email {
   public int hashCode() {
     return Objects.hash(masterNumber, emailAddress);
   }
+
+  @Override
+  public String toString() {
+    return "Email{" +
+            "emailAddress='" + emailAddress + '\'' +
+            '}';
+  }
 }
